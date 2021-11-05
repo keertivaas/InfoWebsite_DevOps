@@ -1,0 +1,484 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+  <style>
+
+    #toolbar {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: rgb(58, 57, 57);
+    }
+
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #111;
+    }
+
+    .command {
+      cursor: pointer;
+      color: #111;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .result {
+      color: #111;
+      font-size: 36px;
+    }
+
+    body {
+      background-color: lightgrey;
+      font-family: "Lucida Console";
+    }
+
+    div.absolute {
+      background-color: lightgrey;
+      width: 900px;
+      border: 15px solid #111;
+      padding: 70px;
+      margin-top: 40px;
+      margin-bottom: 100px;
+      margin-right: 150px;
+      margin-left: 410px;
+      align-self: "center";
+    }
+
+    #sub,
+    #rm,
+    #ct {
+      transition-duration: 0.4s;
+      background-color: #FFF;
+    }
+
+    #sub:hover,
+    #rm:hover,
+    #ct:hover {
+      background-color: #080808;
+      /* Green */
+      color: white;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <style>
+    body {
+      background-image: url("cars.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: white;
+      width: 100%;
+      height: 100%
+    }
+
+    #aboutme.html,
+    #education.html,
+    #projects.html,
+    #certifications.html {
+      text-shadow: 0 0 5px #000;
+      color: white;
+    }
+
+    #form1,
+    #grid1 {
+      border: 2px solid #FFF;
+      border-radius: 5px;
+    }
+
+    .timeline {
+      width: 80%;
+      height: 20%;
+      list-style: none;
+      text-align: justify;
+      padding: 30% auto;
+      background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(45%, rgba(255, 255, 255, 0)), color-stop(51%, rgba(191, 128, 11, 1)), color-stop(57%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(255, 255, 255, 0)));
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 45%, rgba(191, 128, 11, 1) 51%, rgba(255, 255, 255, 0) 57%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    .timeline:after {
+      display: inline-block;
+      content: "";
+      width: 100%;
+    }
+
+    .timeline li {
+      display: inline-block;
+      width: 20%;
+      height: 20%;
+      background: #F2BB13;
+      text-align: center;
+      line-height: 1.2;
+      position: relative;
+      border-radius: 50%;
+    }
+
+    .timeline li:before {
+      display: inline-block;
+      content: attr(data-year);
+      font-size: 26px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .timeline li:nth-child(odd):before {
+      top: -40px;
+    }
+
+    .timeline li:nth-child(even):before {
+      bottom: -40px;
+    }
+
+    .timeline li:after {
+      display: inline-block;
+      content: attr(data-text);
+      font-size: 16px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .timeline li:nth-child(odd):after {
+      bottom: 0;
+      margin-bottom: -10px;
+      transform: translate(-50%, 100%);
+    }
+
+    .timeline li:nth-child(even):after {
+      top: 0;
+      margin-top: -10px;
+      transform: translate(-50%, -100%);
+    }
+
+    .serv,
+    .rout,
+    .addl {
+      clear: both;
+      float: left;
+      display: block;
+      position: relative;
+    }
+
+    #toolbar:hover,
+    .serv:hover,
+    .rout:hover,
+    .addl:hover {
+      text-decoration: none;
+    }
+  </style>
+
+  <script>
+    function check(myform) {
+      var ph_regex = /^[1-9][0-9]{9}$/;
+      var name_regex = /^[a-zA-Z" "]+$/;
+      var email_regex = re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      if (myform.fname.value == "" || myform.fname.value == null || myform.lname.value == "" || myform.lname.value == null) {
+        alert("Name is mandatory");
+        return false;
+      }
+
+      if ((name_regex.test(myform.fname.value) == false) || (name_regex.test(myform.lname.value) == false)) {
+        alert("Name must be alphabetical letters only!");
+        return false;
+      }
+
+      if (email_regex.test(myform.email.value) == false) {
+        alert("Enter valid email ID");
+        return false;
+      }
+
+      if (myform.phone.value == "" || myform.phone.value == null) {
+        alert("Phone number is mandatory");
+        return false;
+      }
+
+      if (ph_regex.test(myform.phone.value) == false) {
+        alert("This is not a valid phone number");
+        return false;
+      }
+
+      if (myform.msg.value == "" || myform.msg.value == null) {
+        alert("Please enter your comments!");
+        return false;
+      }
+
+      alert("Submitted successfully!!");
+      return true;
+    }
+  </script>
+
+  <script type="text/ng-template" id="">
+    <br>
+  <h1 align="center"> Hi!! Welcome to my Portfolio!! </h1>
+  <br>
+  <br>
+
+
+
+  <center> <img src="./sk.jpg" alt= "My Image" width="300" height="300"> </center><br>
+  <h1 align="center"> Keertivaas. S </h1><br><br>
+  <h3 align="center">Experience with Machine Learning, Deep learning and Web Development. Hopes to focus more on Data science, ML and DL.</h3>
+
+<br>
+
+<br><br>
+
+  <h1 align="center">About Me</h1>
+  <h5 align="center">I like being Resilient and to work as a Team!<br> I am currently a final year UG Student in SSN College of Engineering.<br>
+
+<br><br>​Hoping to learn the nuances of development techniques before my job..</h5>
+<br>
+<center><a href = "./#/aboutme" style="color:white"><button id="rm" type="submit" class="btn btn-default">Read More</button></a></center>
+<br><br>
+<br><br>
+
+<br><br><br>
+<h3 align="center">Ping me for any queries and to connect...</h3><br>
+<center><a href = "./#/contactme" style="color:white"><button id="ct" type="submit" class="btn btn-default">Contact Us</button></a></center>
+<br><br>
+
+<center>
+    <a href="https://www.linkedin.com/in/keertivaas-sankaranarayanan-a6517218a/"
+  title="Linkedin"
+  target="_blank"
+  rel="noopener noreffer me"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="50" height = "50"></a><center>
+  <br>
+  <h3 align="center">Find me on Linkedin.</h3><br>
+</script>
+
+  <script type="text/ng-template" id="cocurricular.html">
+    <br>
+    <h2 align="center">Co-Curricular</h2><br>
+    <br>
+
+    <div style="width: 100%;overflow:auto;">
+      <div style="float:left; width: 50%; margin-left:50px; border-right: 2px solid #FFF;text-align:center">
+        <h2 style="text-align:center">💻 Volunteer Experience</h2><br>
+
+■ Vice-Chair, IEEE Computer Society, SSNCE Student Branch [2021-Present]<br><br>
+
+■ Web Development Head, ProCode, Coding Club of Dept of IT, SSNCE [2021-Present]<br><br>
+
+■ National Service Scheme (NSS) [2018-2020]<br><br>
+
+■ IEEE Member [2019-Present]<br><br>
+      </div>
+      <div style="float:left;text-align:center; margin-left:50px;">
+
+        <h2 style="text-align:center; vertical-align:middle; ">🏆 Honours and Rewards</h2><br>
+        ■ Best Outgoing Student of the School 2017-18, Class XII (2017)<br><br>
+        
+        ■ Team Leader for SIH Hackathon, Internal round(2020)<br><br>
+        
+        ■ I Prize in ProCode Cup, 2018-19 - conducted by SSNCE(2019)<br><br>
+        
+        ■ Country Rank 101 in IEEEXtreme 13.0(2019)<br><br>
+      </div>
+  </div>
+
+</div>
+
+    </script>
+
+  <script type="text/ng-template" id="contactme.html">
+
+<div class="container"  style="width:50%; height:50%;margin-top:10px; padding:10px" id="form1">
+  <br><br>
+  <div style="align-self:center">
+<h3 align="center">Let's Connect !!</h3><br>
+<h4 align="center">Leave me a message if you have any Technical questions or to know each other better...<br>
+<br><br>
+  <form name="myform" onsubmit="return check(myform)" method="post" action="https://omkar-drop-taxi.herokuapp.com/insert">
+    <div class="form-group">
+      <label for="fname">First Name:</label>
+      <input type="text" class="form-control" id="fname" ng-model="fname" name="fname">
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="lname">Last Name:</label>
+      <input type="text" class="form-control" id="lname" ng-model="lname" name="lname">
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" class="form-control" id="email" ng-model="email" name="email">
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="phone">Mobile No:</label>
+      <input type="number" class="form-control" id="phone" ng-model="phone" name="phone">
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="msg">Message:</label>
+      <input type="text" class="form-control" id="msg" ng-model="msg" name="msg">
+    </div>
+    <br>
+    <input id = "sub" type="submit" class="btn btn-default">
+  </form>
+</div>
+</div>
+    </script>
+  <script type="text/ng-template" id="aboutme.html">
+    <br>
+    <div style="text-align:center">
+    <div style="text-align:center;border:1px solid; display:inline-block; border-radius:5px; padding:25px">
+      <br>
+    <h3 align="center"> About Me </h3><br>
+    <ul style="display: block; padding: 0;">
+      <li class="serv" style="float:none; display:inline-block"> <a style="text-decoration:none" href="#/aboutme/education">Education</a> </li><br>
+      <li class = "rout" style="float:none; display:inline-block"> <a style="text-decoration:none" href="#/aboutme/projects">Projects</a> </li><br>
+      <li class = "addl" style="float:none; display:inline-block"> <a style="text-decoration:none" href="#/aboutme/certifications">Certifications</a> </li><br>
+    </ul>
+  </div>
+  </div>
+  </script>
+
+  <script type="text/ng-template" id="education.html">
+    <br>
+    <div style="text-align:center">
+      <div style="text-align:center;border:1px solid; display:inline-block; border-radius:5px; padding:25px">
+    <h2>📜 Education</h2>
+    <br>
+    
+SSN College of Engineering, Chennai <br>
+
+B.Tech in Information Technology [ CGPA as on date (Till Sem 6) : 9.11/10 ]<br>
+[ 2018 – 2022 ]<br>
+<br>
+D.A.V. Boys Senior Secondary School, Gopalapuram, Chennai<br>
+
+Class 12 CBSE => 95.4% aggregate<br>
+[ 2017 – 2018 ]<br>
+  </div>
+</div>
+  </script>
+  <script type="text/ng-template" id="projects.html">
+    <br>
+    <div style="text-align:center">
+      <div style="text-align:center;border:1px solid; display:inline-block; border-radius:5px; padding:25px">
+    <h3>👩🏽‍🚀 Projects</h3><br>
+    <p style="font-size:18px">
+      ■ Tuberculosis detection<br>
+      
+      From X-Ray images using CNNs - Achieved upto 99.83% accuracy in Kaggle dataset (7000 imgs) using Ensemble learning – Ongoing Research<br><br>
+      
+      ■ Snapzatt<br>
+      
+      A Facial Recognition based Automated real-time Attendance System (App) for Educational Institutions, using FaceNet and Firebase.<br><br>
+      
+      ■ ASL Dataset - Voting<br>
+      
+      Prediction of various sign language symbols using CNNs and an Ensemble of them on the American Sign Language (ASL) Dataset.<br><br>
+    </p>
+    </div>
+  </div>
+  </script>
+
+  <script type="text/ng-template" id="certifications.html">
+      <br>
+      <div style="text-align:center">
+        <div style="text-align:center;border:1px solid; display:inline-block; border-radius:5px; padding:25px">
+    <h3> 📚 Certifications</h3>
+    <br>
+    <p style="font-size:18px">
+      ■ Programming, Data Structures and Algorithms using Python, Dec 2020 - NPTEL.<br><br>
+      
+      ■ Python for Data Science, Mar 2021 - NPTEL.<br><br>
+      
+      ■ Convolutional Neural Networks, Aug 2021 - Deeplearning.ai, Coursera.<br><br>
+      
+      ■ Programming in Java, Aug 2021 - NPTEL.<br><br>
+    </p>
+  </div>
+</div>
+    </script>
+  <!-- </div> -->
+
+  <ul id="toolbar">
+    <li><a class="active" style="text-decoration:none" href="#/">Home</a></li>
+    <li><a style="text-decoration:none" href="#/aboutme">About</a></li>
+    <li><a style="text-decoration:none" href="#/cocurricular">Co-Curricular</a></li>
+    <li><a style="text-decoration:none" href="#/contactme">Contact</a></li>
+  </ul>
+
+  <div ng-view></div>
+
+  </ul>
+
+</body>
+
+</html>
+
+<script>
+  var app = angular.module('myApp', ['ngRoute']);
+
+  app.config(function ($routeProvider) {
+    $routeProvider
+
+
+      .when('/', {
+        templateUrl: '',
+      })
+
+      .when('/cocurricular', {
+        templateUrl: 'cocurricular.html',
+      })
+
+      .when('/aboutme', {
+        templateUrl: 'aboutme.html',
+      })
+
+      .when('/aboutme/education', {
+        templateUrl: 'education.html',
+      })
+
+      .when('/aboutme/projects', {
+        templateUrl: 'projects.html',
+      })
+
+      .when('/aboutme/certifications', {
+        templateUrl: 'certifications.html',
+      })
+
+      .when('/contactme', {
+        templateUrl: 'contactme.html',
+      })
+
+      .otherwise({ redirectTo: '/' });
+  });
+
+</script>
+</body>
+
+</html>
