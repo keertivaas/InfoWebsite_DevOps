@@ -59,6 +59,9 @@ app.post('/insert', urlencodedParser, function (req, res) {
   res.render('insert');
 });
 
+app.get("*", (req,res)=>{
+  res.send("404");
+})
 
 module.exports = app;
 
