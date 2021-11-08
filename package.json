@@ -1,7 +1,7 @@
 {
-  "name": "OmkarDropTaxi_Website",
+  "name": "Info Website",
   "version": "1.0.0",
-  "description": "Building a website for Omkar Drop Taxi, Chennai.",
+  "description": "Building an Info website - Portfolio",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -18,13 +18,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/keertivaas/OmkarDropTaxi_Website.git"
+    "url": "git+https://github.com/keertivaas/InfoWebsite_DevOps.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/keertivaas/OmkarDropTaxi_Website/issues"
+    "url": "https://github.com/keertivaas/InfoWebsite_DevOps/issues"
   },
-  "homepage": "https://github.com/keertivaas/OmkarDropTaxi_Website#readme"
+  "homepage": "https://github.com/keertivaas/InfoWebsite_DevOps#readme"
 }
