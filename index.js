@@ -8,7 +8,7 @@ var app = express();
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var MongoClient = require('mongodb').MongoClient;
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.set('view engine', 'pug');
 
@@ -16,6 +16,7 @@ app.set('view engine', 'pug');
 const url = "mongodb+srv://admin:admin@omkardb.z8ns1.mongodb.net/";
 
 app.get('/', function (req, res, next) {
+  // console.log(__dirname);
   res.status(200).sendFile(path.join(__dirname + '/index.html'));
 });
 
