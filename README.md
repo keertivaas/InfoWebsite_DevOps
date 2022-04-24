@@ -1,5 +1,5 @@
-# InfoWebsite_DevOps
-Building an Application in Devops Style
+# My Portfolio!!!
+Building a Portfolio in Devops Style
 
 App has been developed using HTML, CSS, JavaScript and Bootstrap. 
 Frontend used is AngularJS, also used for routes. 
