@@ -15,6 +15,10 @@
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href=.views/Me.css">
   <style>
 
     #toolbar {
@@ -264,7 +268,7 @@
 
 <br><br><br>
 <h3 align="center">Ping me for any queries and to connect...</h3><br>
-<center><a href = "./#/contactme" style="color:white"><button id="ct" type="submit" class="btn btn-default">Contact Us</button></a></center>
+<center><a href = "./#/contactInfo" style="color:white"><button id="ct" type="submit" class="btn btn-default">Contact Us</button></a></center>
 <br><br>
 
 <center>
@@ -288,17 +292,17 @@
       <div style="float:left; width: 50%; margin-left:50px; border-right: 2px solid #FFF;text-align:center">
         <h2 style="text-align:center">💻 Volunteer Experience</h2><br>
 
-■ Vice-Chair, IEEE Computer Society,<br> SSNCE Student Branch<br>[2021-Present]<br><br>
+■ Vice-Chair, IEEE Computer Society,<br> SSNCE Student Branch<br>[2021-2022]<br><br>
 
-■ Web Development Head, ProCode,<br> Coding Club of Dept of IT, SSNCE<br>[2021-Present]<br><br>
+■ Web Development Head, ProCode,<br> Coding Club of Dept of IT, SSNCE<br>[2021-2022]<br><br>
 
 ■ National Service Scheme (NSS)<br>[2018-2020]<br><br>
 
 ■ IEEE Member<br>[2019-Present]<br><br>
 
-■ Coordinator, IEEE Website<br>SSNCE<br>[2021-Present]<br>http://ieeesb.herokuapp.com/<br><br> 
+■ Coordinator, IEEE Website<br>SSNCE<br>[2021-2022]<br>http://ieeesb.herokuapp.com/<br><br> 
 
-■ Coordinator & Webmaster, ProCoDe Website<br>Dept of IT, SSNCE<br>[2021-Present]<br>https://procode-it-ssn.github.io<br><br> 
+■ Coordinator & Webmaster, ProCoDe Website<br>Dept of IT, SSNCE<br>[2021-2022]<br>https://procode-it-ssn.github.io<br><br> 
       </div>
       <div style="float:left;text-align:center; margin-left:50px;">
 
@@ -317,15 +321,33 @@
 
     </script>
 
-  <script type="text/ng-template" id="contactme.html">
+  
+<script type="text/ng-template" id="contactInfo.html">
+<title>Hey there, Good Day!!</title>
+  
 
 <div class="container"  style="width:50%; height:50%;margin-top:10px; padding:10px" id="form1">
   <br><br>
   <div style="align-self:center">
 <h3 align="center">Let's Connect !!</h3><br>
-<h4 align="center">Leave me a message if you have any Technical questions or to know each other better...<br>
+<h4 align="center">Leave me a message on Linkedin or Email me for any Queries...<br>
 <br><br>
-  <form name="myform" onsubmit="return check(myform)" method="post" action="https://keertivaas.github.io/insert">
+<h2>📞 Contact</h2>
+      <buttondiv>
+        <a class="button-class"
+          href="https://drive.google.com/file/d/1fczP2yKhjeqXXYq-m2qRFa3NrVjSpDGI/view?usp=share_link" title="Resume"
+          target="_blank" rel="noopener noreffer me">
+          My Resume
+        </a>
+      </buttondiv>
+      <links>
+        <a href="https://github.com/keertivaas" title="GitHub" target="_blank" rel="noopener noreffer me"><i
+            class="fab fa-github-alt fa-3x"></i></a><a
+          href="https://www.linkedin.com/in/keertivaas-sankaranarayanan-a6517218a/" title="LinkedIn" target="_blank"
+          rel="noopener noreffer me"><i class="fab fa-linkedin fa-3x"></i></a><a href="mailto:keertivaasoffl@gmail.com"
+          title="Email" rel=" me"><i class="fas fa-envelope fa-3x"></i></a>
+      </links>
+  <!-- <form name="myform" onsubmit="return check(myform)" method="post" action="https://keertivaas.github.io/insert">
     <div class="form-group">
       <label for="fname">First Name:</label>
       <input type="text" class="form-control" id="fname" ng-model="fname" name="fname">
@@ -352,7 +374,7 @@
     </div>
     <br>
     <input id = "sub" type="submit" class="btn btn-default">
-  </form>
+  </form> -->
 </div>
 </div>
     </script>
@@ -380,7 +402,7 @@
     
 SSN College of Engineering, Chennai <br>
 
-B.Tech in Information Technology [ CGPA as on date (Till Sem 6) : 9.11/10 ]<br>
+B.Tech in Information Technology [ CGPA : 9.19/10 ]<br>
 [ 2018 – 2022 ]<br>
 <br>
 D.A.V. Boys Senior Secondary School, Gopalapuram, Chennai<br>
@@ -398,8 +420,12 @@ Class 12 CBSE => 95.4% aggregate<br>
     <p style="font-size:18px">
       ■ Tuberculosis detection<br>
       
-      From X-Ray images using CNNs - Achieved upto 99.83% accuracy in Kaggle dataset (7000 imgs) using Ensemble learning – Ongoing Research<br><br>
+      From X-Ray images using CNNs - Achieved upto 99.58% Accuracy using Histogram Matching<br>(Research paper published - <a href= "https://www.techscience.com/csse/v44n1/48063">Click to view Paper</a>)<br>and 99.83% Accuracy, in Kaggle dataset (7000 imgs) using Ensemble learning (Ongoing Research)<br><br>
       
+      ■ Speaker Recognition using Short Speech Segments<br>
+      
+      Used Recurrence Plots for Speaker Recognition, achieved upto 92.5% and 95% for 3sec and 6sec segment respectively.<br><br>
+
       ■ Snapzatt<br>
       
       A Facial Recognition based Automated real-time Attendance System (App) for Educational Institutions, using FaceNet and Firebase.<br><br>
@@ -436,7 +462,7 @@ Class 12 CBSE => 95.4% aggregate<br>
     <li><a class="active" style="text-decoration:none" href="#/">Home</a></li>
     <li><a style="text-decoration:none" href="#/aboutme">About</a></li>
     <li><a style="text-decoration:none" href="#/cocurricular">Co-Curricular</a></li>
-    <li><a style="text-decoration:none" href="#/contactme">Contact</a></li>
+    <li><a style="text-decoration:none" href="#/contactInfo">Contact</a></li>
   </ul>
 
   <div ng-view></div>
@@ -478,8 +504,8 @@ Class 12 CBSE => 95.4% aggregate<br>
         templateUrl: 'certifications.html',
       })
 
-      .when('/contactme', {
-        templateUrl: 'contactme.html',
+      .when('/contactInfo', {
+        templateUrl: 'contactInfo.html',
       })
 
       .otherwise({ redirectTo: '/' });

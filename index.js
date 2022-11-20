@@ -22,6 +22,12 @@ app.get('/', function (req, res, next) {
   res.status(200).sendFile(path.join(__dirname + '/index.html'));
 });
 
+app.get('/contactInfo', function (req, res, next) {
+  // console.log(__dirname);
+  // res.status(200).sendFile(path.join(__dirname + '/index.html'));
+  res.render('Me');
+});
+
 app.post('/insert', urlencodedParser, function (req, res) {
   var fname = req.body.fname;
   var lname = req.body.lname;
