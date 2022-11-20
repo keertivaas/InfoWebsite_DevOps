@@ -9,64 +9,58 @@ var app = express();
 // app.use(express.static(__dirname + 'assets'))
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-var MongoClient = require('mongodb').MongoClient;
+// var MongoClient = require('mongodb').MongoClient;
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.set('view engine', 'pug');
 
 //MongoDB Atlas connection string
-const url = "mongodb+srv://admin:admin@omkardb.z8ns1.mongodb.net/";
+// const url = "mongodb+srv://admin:admin@omkardb.z8ns1.mongodb.net/";
 
 app.get('/', function (req, res, next) {
   // console.log(__dirname);
   res.status(200).sendFile(path.join(__dirname + '/index.html'));
 });
 
-app.get('/contactInfo', function (req, res, next) {
-  // console.log(__dirname);
-  // res.status(200).sendFile(path.join(__dirname + '/index.html'));
-  res.render('Me');
-});
+// app.post('/insert', urlencodedParser, function (req, res) {
+//   var fname = req.body.fname;
+//   var lname = req.body.lname;
+//   var phone = req.body.phone;
+//   var email = req.body.email;
+//   var msg = req.body.msg;
+//   MongoClient.connect(url, {useUnifiedTopology: true}, function (err, db) {
+//     if (err) throw err;
+//     var dbo = db.db("OmkarDB");
+//     var myobj = { First_name: fname, Last_name: lname, Phone: phone, Email: email, Msg: msg };
+//     dbo.collection("Omkar").insertOne(myobj, function (err, res) {
+//       if (err) throw err;
+//       console.log("1 document inserted");
+//       db.close();
+//     });
+//   });
 
-app.post('/insert', urlencodedParser, function (req, res) {
-  var fname = req.body.fname;
-  var lname = req.body.lname;
-  var phone = req.body.phone;
-  var email = req.body.email;
-  var msg = req.body.msg;
-  MongoClient.connect(url, {useUnifiedTopology: true}, function (err, db) {
-    if (err) throw err;
-    var dbo = db.db("OmkarDB");
-    var myobj = { First_name: fname, Last_name: lname, Phone: phone, Email: email, Msg: msg };
-    dbo.collection("Omkar").insertOne(myobj, function (err, res) {
-      if (err) throw err;
-      console.log("1 document inserted");
-      db.close();
-    });
-  });
+//   var myreq = unirest("GET", "https://www.fast2sms.com/dev/bulkV2");
 
-  var myreq = unirest("GET", "https://www.fast2sms.com/dev/bulkV2");
+//   myreq.query({
+//     "authorization": "M5j0s6qfDOUWHClNrx8JbpTRuv7PyIzwtXZkAicE9F4nYmgdQahRx8fFegWBjbpOirzT0YMtQD5CmvKa",
+//     "sender_id": "TXTIND",
+//     "message": "Hi!!! " + fname + " left a message for you. Message : "+ msg,
+//     "route": "v3",
+//     "numbers": req.body.phone
+//   });
 
-  myreq.query({
-    "authorization": "M5j0s6qfDOUWHClNrx8JbpTRuv7PyIzwtXZkAicE9F4nYmgdQahRx8fFegWBjbpOirzT0YMtQD5CmvKa",
-    "sender_id": "TXTIND",
-    "message": "Hi!!! " + fname + " left a message for you. Message : "+ msg,
-    "route": "v3",
-    "numbers": req.body.phone
-  });
-
-  myreq.headers({
-    "cache-control": "no-cache"
-  });
+//   myreq.headers({
+//     "cache-control": "no-cache"
+//   });
 
 
-  myreq.end(function (res) {
-    if (res.error) throw new Error(res);
-  });
-  app.locals.output1 = "Thank you for contacting me!";
-  app.locals.output2 = "Will get back to you shortly, " + fname;
-  res.render('insert');
-});
+//   myreq.end(function (res) {
+//     if (res.error) throw new Error(res);
+//   });
+//   app.locals.output1 = "Thank you for contacting me!";
+//   app.locals.output2 = "Will get back to you shortly, " + fname;
+//   res.render('insert');
+// });
 
 app.get("*", (req,res)=>{
   res.send("404");
